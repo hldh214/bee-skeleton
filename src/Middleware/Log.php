@@ -1,6 +1,7 @@
 <?php
 namespace Star\Middleware;
 
+use Bee\Mq\Consumer\Rabbit;
 use Phalcon\Events\Event;
 use Star\Util\Micro;
 use Star\Util\Exception;
@@ -136,6 +137,7 @@ class Log
             $this->save($log);
         }
     }
+
 
     /**
      * 保存日志
