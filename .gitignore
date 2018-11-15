@@ -3,8 +3,7 @@
 !.phalcon.php
 .idea/
 *.log
-runtime/db.php
-runtime/mq.php
+runtime/build.db.php
 *.pid
 nbproject/
 .htaccess
