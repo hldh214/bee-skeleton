@@ -21,19 +21,19 @@ class Log
      */
     public function beforeHandleRequest(Event $event, Micro $micro, $params = [])
     {
-//        $this->save(
-//            [
-//                'request_id' => $micro->global['requestId'],
-//                'user_id'    => $micro->global['userId'],
-//                'type'       => 'http:before',
-//                'receive'    => [
-//                    'server' => $_SERVER,
-//                    'post'   => $_POST,
-//                    'get'    => $_GET,
-//                    'raw'    => $micro->request->getRawBody()
-//                ]
-//            ]
-//        );
+        $this->save(
+            [
+                'request_id' => $micro->global['requestId'],
+                'user_id'    => $micro->global['userId'],
+                'type'       => 'http:before',
+                'receive'    => [
+                    'server' => $_SERVER,
+                    'post'   => $_POST,
+                    'get'    => $_GET,
+                    'raw'    => $micro->request->getRawBody()
+                ]
+            ]
+        );
     }
 
     /**
@@ -45,14 +45,14 @@ class Log
      */
     public function handleRequest(Event $event, Micro $micro, $params = [])
     {
-//        $this->save(
-//            [
-//                'request_id' => $micro->global['requestId'],
-//                'user_id'    => $micro->global['userId'],
-//                'type'       => 'http:handle',
-//                'running'    => $params
-//            ]
-//        );
+        $this->save(
+            [
+                'request_id' => $micro->global['requestId'],
+                'user_id'    => $micro->global['userId'],
+                'type'       => 'http:handle',
+                'running'    => $params
+            ]
+        );
     }
 
     /**
@@ -65,14 +65,14 @@ class Log
     public function afterHandleRequest(Event $event, Micro $micro, $params = [])
     {
         // 保存日志
-//        $this->save(
-//            [
-//                'request_id' => $micro->global['requestId'],
-//                'user_id'    => $micro->global['userId'],
-//                'type'       => 'http:after',
-//                'running'    => $params
-//            ]
-//        );
+        $this->save(
+            [
+                'request_id' => $micro->global['requestId'],
+                'user_id'    => $micro->global['userId'],
+                'type'       => 'http:after',
+                'running'    => $params
+            ]
+        );
     }
 
     /**

@@ -2,6 +2,7 @@
     "name": "bee-framework/skeleton",
     "description": "Bee框架骨架",
     "require": {
+        "ext-swoole": "*",
         "ext-phalcon": "*",
         "bee-framework/cli": "^1.0",
         "bee-framework/http": "^1.0",
