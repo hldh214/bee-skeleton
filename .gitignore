@@ -1,6 +1,7 @@
 .*
 !.gitignore
 !.phalcon.php
+!.htrouter.php
 .idea/
 *.log
 runtime/build.db.php
