@@ -1,0 +1,449 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "1a87ced3840e66a55be8d684d8b45437",
+    "packages": [
+        {
+            "name": "adhocore/cli",
+            "version": "0.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adhocore/php-cli.git",
+                "reference": "9dbab2581b1797b9b37caf83102ec0335e046f7d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adhocore/php-cli/zipball/9dbab2581b1797b9b37caf83102ec0335e046f7d",
+                "reference": "9dbab2581b1797b9b37caf83102ec0335e046f7d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ahc\\Cli\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jitendra Adhikari",
+                    "email": "jiten.adhikary@gmail.com"
+                }
+            ],
+            "description": "Command line interface library for PHP",
+            "keywords": [
+                "PHP7",
+                "argument-parser",
+                "argv-parser",
+                "cli",
+                "cli-action",
+                "cli-app",
+                "cli-color",
+                "cli-option",
+                "cli-writer",
+                "command",
+                "console",
+                "console-app",
+                "php-cli",
+                "stream-input",
+                "stream-output"
+            ],
+            "time": "2018-09-06T15:32:22+00:00"
+        },
+        {
+            "name": "bee-framework/cli",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Anoxia/bee-cli.git",
+                "reference": "d6320a0b31f2fd537b7962a26bb24cc0f0f105c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Anoxia/bee-cli/zipball/d6320a0b31f2fd537b7962a26bb24cc0f0f105c9",
+                "reference": "d6320a0b31f2fd537b7962a26bb24cc0f0f105c9",
+                "shasum": ""
+            },
+            "require": {
+                "adhocore/cli": "^0.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bee\\Cli\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Bee框架命令行组件",
+            "time": "2018-10-25T02:52:09+00:00"
+        },
+        {
+            "name": "bee-framework/http",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Anoxia/bee-http.git",
+                "reference": "d582c21c7d5b0355b116a0211991496ca9053bff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Anoxia/bee-http/zipball/d582c21c7d5b0355b116a0211991496ca9053bff",
+                "reference": "d582c21c7d5b0355b116a0211991496ca9053bff",
+                "shasum": ""
+            },
+            "require": {
+                "adhocore/cli": "^0.3.2",
+                "bee-framework/util": "^1.0",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-pcntl": "*",
+                "ext-phalcon": "^3.4.0",
+                "ext-swoole": "^4.1.0",
+                "php": "^7.2.0"
+            },
+            "require-dev": {
+                "eaglewu/swoole-ide-helper": "master-dev",
+                "fastd/swoole": "^2.3",
+                "phalcon/ide-stubs": "*",
+                "phpunit/phpunit": "^7.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bee\\Http\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "南山吴彦祖",
+                    "email": "anoxia@engineer.com"
+                }
+            ],
+            "description": "Bee框架http组件",
+            "time": "2018-11-08T04:07:32+00:00"
+        },
+        {
+            "name": "bee-framework/mq",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Anoxia/bee-mq.git",
+                "reference": "da1acbd63a28973a733a4240bb4ebb8ae77f2310"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Anoxia/bee-mq/zipball/da1acbd63a28973a733a4240bb4ebb8ae77f2310",
+                "reference": "da1acbd63a28973a733a4240bb4ebb8ae77f2310",
+                "shasum": ""
+            },
+            "require": {
+                "bee-framework/process": "^1.0",
+                "bee-framework/serialize": "^1.0",
+                "bee-framework/util": "^1.0",
+                "ext-amqp": "*",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "eaglewu/swoole-ide-helper": "master-dev",
+                "phalcon/ide-stubs": "*",
+                "phpunit/phpunit": "^7.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bee\\Mq\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Bee框架MQ组件",
+            "time": "2018-11-07T12:17:56+00:00"
+        },
+        {
+            "name": "bee-framework/process",
+            "version": "v1.0.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Anoxia/bee-process.git",
+                "reference": "3fb6375e199a263a310a67b110da0a9b5bf6acfe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Anoxia/bee-process/zipball/3fb6375e199a263a310a67b110da0a9b5bf6acfe",
+                "reference": "3fb6375e199a263a310a67b110da0a9b5bf6acfe",
+                "shasum": ""
+            },
+            "require": {
+                "adhocore/cli": "^0.3.2",
+                "bee-framework/util": "^1.0",
+                "ext-igbinary": "*",
+                "ext-inotify": "^2.0.0",
+                "ext-pcntl": "*",
+                "ext-swoole": "^4.1.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "eaglewu/swoole-ide-helper": "master-dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bee\\Process\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "南山吴彦祖",
+                    "email": "anoxia@engineer.com"
+                }
+            ],
+            "description": "Bee框架进程组件",
+            "time": "2018-11-07T11:24:17+00:00"
+        },
+        {
+            "name": "bee-framework/serialize",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Anoxia/bee-serialize.git",
+                "reference": "6df85c1f72cf0013bd65774dbda14a01b0874e21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Anoxia/bee-serialize/zipball/6df85c1f72cf0013bd65774dbda14a01b0874e21",
+                "reference": "6df85c1f72cf0013bd65774dbda14a01b0874e21",
+                "shasum": ""
+            },
+            "require": {
+                "bee-framework/util": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bee\\Serialize\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Bee框架序列化组件",
+            "time": "2018-11-07T02:52:15+00:00"
+        },
+        {
+            "name": "bee-framework/util",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Anoxia/bee-util.git",
+                "reference": "dceb0117962de995e92a28ddb94a5c38a58a2876"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Anoxia/bee-util/zipball/dceb0117962de995e92a28ddb94a5c38a58a2876",
+                "reference": "dceb0117962de995e92a28ddb94a5c38a58a2876",
+                "shasum": ""
+            },
+            "require": {
+                "ext-inotify": "*",
+                "ext-phalcon": "^3.2.0"
+            },
+            "require-dev": {
+                "phalcon/ide-stubs": "*",
+                "phpunit/phpunit": "^7.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bee\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Bee框架通用类库",
+            "time": "2018-10-11T15:02:17+00:00"
+        },
+        {
+            "name": "lcobucci/jwt",
+            "version": "3.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/jwt.git",
+                "reference": "c9704b751315d21735dc98d78d4f37bd73596da7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/c9704b751315d21735dc98d78d4f37bd73596da7",
+                "reference": "c9704b751315d21735dc98d78d4f37bd73596da7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "mdanter/ecc": "~0.3.1",
+                "mikey179/vfsstream": "~1.5",
+                "phpmd/phpmd": "~2.2",
+                "phpunit/php-invoker": "~1.1",
+                "phpunit/phpunit": "~4.5",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "suggest": {
+                "mdanter/ecc": "Required to use Elliptic Curves based algorithms."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Otávio Cobucci Oblonczyk",
+                    "email": "lcobucci@gmail.com",
+                    "role": "developer"
+                }
+            ],
+            "description": "A simple library to work with JSON Web Token and JSON Web Signature",
+            "keywords": [
+                "JWS",
+                "jwt"
+            ],
+            "time": "2018-08-03T11:23:50+00:00"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "eaglewu/swoole-ide-helper",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wudi/swoole-ide-helper.git",
+                "reference": "d5ba04bca84302713dc4ae288dcdf11febb82d35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wudi/swoole-ide-helper/zipball/d5ba04bca84302713dc4ae288dcdf11febb82d35",
+                "reference": "d5ba04bca84302713dc4ae288dcdf11febb82d35",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "eagle",
+                    "email": "eaglewudi@gmail.com",
+                    "role": "lead"
+                }
+            ],
+            "description": "Swoole IDE Helper, to improve auto-completion",
+            "keywords": [
+                "autocomplete",
+                "codeintel",
+                "helper",
+                "ide",
+                "netbeans",
+                "phpdoc",
+                "phpstorm",
+                "sublime",
+                "swoole"
+            ],
+            "time": "2018-10-25T04:44:48+00:00"
+        },
+        {
+            "name": "phalcon/ide-stubs",
+            "version": "v3.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phalcon/ide-stubs.git",
+                "reference": "48e7920621dd2086efe39ab1d52aa9b2e1b8dca0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phalcon/ide-stubs/zipball/48e7920621dd2086efe39ab1d52aa9b2e1b8dca0",
+                "reference": "48e7920621dd2086efe39ab1d52aa9b2e1b8dca0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Phalcon Team",
+                    "email": "team@phalconphp.com",
+                    "homepage": "https://phalconphp.com/en/team"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/phalcon/ide-stubs/graphs/contributors"
+                }
+            ],
+            "description": "The most complete Phalcon Framework IDE stubs library which enables autocompletion in modern IDEs.",
+            "homepage": "https://phalconphp.com",
+            "keywords": [
+                "Devtools",
+                "Eclipse",
+                "autocomplete",
+                "ide",
+                "netbeans",
+                "phalcon",
+                "phpstorm",
+                "stub",
+                "stubs"
+            ],
+            "time": "2018-09-18T18:54:45+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "eaglewu/swoole-ide-helper": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "ext-redis": "*",
+        "ext-phalcon": "*",
+        "ext-amqp": "*",
+        "ext-igbinary": "*",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-mbstring": "*",
+        "ext-pdo": "*",
+        "ext-openssl": "*"
+    },
+    "platform-dev": []
+}

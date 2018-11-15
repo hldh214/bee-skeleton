@@ -1,0 +1,35 @@
+{
+    "name": "Star/Group",
+    "description": "粉丝星球星球模块",
+    "require": {
+        "ext-redis": "*",
+        "ext-phalcon": "*",
+        "ext-amqp": "*",
+        "ext-igbinary": "*",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-mbstring": "*",
+        "ext-pdo": "*",
+        "ext-openssl": "*",
+        "bee-framework/cli": "^1.0",
+        "bee-framework/http": "^1.0",
+        "bee-framework/util": "^1.0",
+        "bee-framework/mq": "^1.0",
+        "lcobucci/jwt": "^3.2"
+    },
+    "require-dev": {
+        "phalcon/ide-stubs": "*",
+        "eaglewu/swoole-ide-helper": "master-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Star\\": "src/"
+        },
+        "files": ["src/helper.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Star\\Test\\": "tests/"
+        }
+    }
+}
