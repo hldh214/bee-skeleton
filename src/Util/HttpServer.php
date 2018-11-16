@@ -67,8 +67,12 @@ class HttpServer extends Server
             $micro->eventsManager->fire("log:handleShutdown", $micro);
             $micro->eventsManager->fire('micro:afterHandleShutdown', $micro);
         });
+        // 错误处理方法
+        set_error_handler(function () use ($micro) {
+            $micro->eventsManager->fire("log:handleError", $micro, func_get_args());
+        }, E_ALL);
 
-        // micro注入时间管理器
+        // micro注入事件管理器
         $micro->setEventsManager($di->getShared('eventsManager'));
 
         // 加载路由

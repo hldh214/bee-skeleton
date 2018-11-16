@@ -6,7 +6,8 @@
         "ext-phalcon": "^3.4",
         "bee-framework/cli": "^1.0",
         "bee-framework/http": "^1.0",
-        "bee-framework/util": "^1.0"
+        "bee-framework/util": "^1.0",
+        "ext-json": "*"
     },
     "require-dev": {
         "phalcon/ide-stubs": "*",

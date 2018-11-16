@@ -49,11 +49,7 @@ class MySQL
 
         // 断线重连
         if ($global['MYSQL_CLOSE_TIME'] <= $currentTime) {
-            try {
-                $adapter->query('SELECT 1');
-            } catch (\Throwable $e) {
-                $adapter->connect();
-            }
+            $adapter->connect();
         }
 
         // 执行了查询，更新空闲超时时间

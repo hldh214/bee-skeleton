@@ -1,10 +1,10 @@
 <?php
 namespace Star\Middleware;
 
-use Bee\Mq\Consumer\Rabbit;
 use Phalcon\Events\Event;
 use Star\Util\Micro;
 use Star\Util\Exception;
+use Star\Util\RabbitWorker;
 
 /**
  * 日志记录中间件
@@ -116,6 +116,32 @@ class Log
     }
 
     /**
+     * MQ错误记录
+     *
+     * @param Event $event
+     * @param Micro $micro
+     * @param array $args
+     */
+    public function handleError(Event $event, Micro $micro, array $args)
+    {
+        $running = [
+            'message'  => $args[1],
+            'code'     => 500,
+            'file'     => $args[2],
+            'line'     => $args[3]
+        ];
+
+        $log = [
+            'request_id' => $micro->global['requestId'],
+            'user_id'    => $micro->global['userId'],
+            'type'       => 'http:error',
+            'running'    => $running
+        ];
+
+        $this->save($log);
+    }
+
+    /**
      * http shutdown
      *
      * @param Event $event
@@ -138,6 +164,70 @@ class Log
         }
     }
 
+    /**
+     * MQ异常记录
+     *
+     * @param Event $event
+     * @param RabbitWorker $rabbit
+     * @param \Throwable $throwable
+     */
+    public function handleMqThrowable(Event $event, RabbitWorker $rabbit, \Throwable $throwable)
+    {
+        $traces = $throwable->getTrace();
+        $trace = array_shift($traces);
+
+        // 异常信息
+        $running = [
+            'message'  => $throwable->getMessage(),
+            'code'     => $throwable->getCode(),
+            'file'     => $trace['file'] ?? '',
+            'line'     => $trace['line'] ?? -1,
+            'function' => $trace['function'],
+            'trace'    => $traces,
+        ];
+
+        // 框架异常
+        if ($throwable instanceof Exception) {
+            $running['data'] = $throwable->data;
+            $running['args'] = $throwable->args;
+        }
+
+        $log = [
+            'request_id' => $rabbit->global['requestId'],
+            'user_id'    => $rabbit->global['userId'],
+            'type'       => 'mq:exception',
+            'running'    => $running
+        ];
+
+        // 保存日志
+        $this->save($log);
+    }
+
+    /**
+     * MQ错误记录
+     *
+     * @param Event $event
+     * @param RabbitWorker $rabbit
+     * @param array $args
+     */
+    public function handleMqError(Event $event, RabbitWorker $rabbit, array $args)
+    {
+        $running = [
+            'message'  => $args[1],
+            'code'     => 500,
+            'file'     => $args[2],
+            'line'     => $args[3]
+        ];
+
+        $log = [
+            'request_id' => $rabbit->global['requestId'],
+            'user_id'    => $rabbit->global['userId'],
+            'type'       => 'mq:error',
+            'running'    => $running
+        ];
+
+        $this->save($log);
+    }
 
     /**
      * 保存日志
