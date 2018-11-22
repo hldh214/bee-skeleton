@@ -5,6 +5,7 @@ use Bee\Http\Server;
 use Phalcon\Di;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
+use Swoole\Http\Server as SwooleHttpServer;
 
 /**
  * HttpServer
@@ -26,9 +27,9 @@ class HttpServer extends Server
     /**
      * Server启动在主进程的主线程回调此方法
      *
-     * @param \Swoole\Http\Server $server
+     * @param SwooleHttpServer $server
      */
-    public function onStart(\Swoole\Http\Server $server)
+    public function onStart(SwooleHttpServer $server)
     {
         swoole_set_process_name($this->name . ':reactor');
     }
@@ -36,10 +37,10 @@ class HttpServer extends Server
     /**
      * Worker进程/Task进程启动时回调此方法
      *
-     * @param \Swoole\Http\Server $server
+     * @param SwooleHttpServer $server
      * @param integer $workerId
      */
-    public function onWorkerStart(\Swoole\Http\Server $server, $workerId)
+    public function onWorkerStart(SwooleHttpServer $server, $workerId)
     {
         if ($server->taskworker) {
             swoole_set_process_name($this->name . ':task');
@@ -86,19 +87,6 @@ class HttpServer extends Server
     }
 
     /**
-     * worker进程终止时回调此方法
-     *  - 在此函数中回收worker进程申请的各类资源
-     *
-     * @param \Swoole\Http\Server $server
-     * @param integer $workerId
-     */
-    public function onWorkerStop(\Swoole\Http\Server $server, $workerId)
-    {
-        // 断开数据库连接
-        $this->micro->db->close();
-    }
-
-    /**
      * Http请求进来时回调此方法
      *
      * @param Request $request
@@ -114,17 +102,29 @@ class HttpServer extends Server
     }
 
     /**
+     * worker进程终止时回调此方法
+     *  - 在此函数中回收worker进程申请的各类资源
+     *
+     * @param SwooleHttpServer $server
+     * @param integer $workerId
+     */
+    public function onWorkerStop(SwooleHttpServer $server, $workerId)
+    {
+        // 断开数据库连接
+        $this->micro->db->close();
+    }
+
+    /**
      * worker进程异常时回调此方法
      *
-     * @param \Swoole\Http\Server $server
+     * @param SwooleHttpServer $server
      * @param integer $workerId
      * @param integer $workerPid
      * @param integer $exitCode
      * @param integer $signal
-     *
-     * @return mixed
      */
-    public function onWorkerError(\Swoole\Http\Server $server, $workerId, $workerPid, $exitCode, $signal)
+    public function onWorkerError(SwooleHttpServer $server, $workerId, $workerPid, $exitCode, $signal)
     {
+        file_put_contents(RUNTIME_PATH . '/http_worker.log', "Worker[{$workerId}]进程异常退出" . PHP_EOL, 8);
     }
 }

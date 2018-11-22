@@ -2,6 +2,7 @@
     "name": "bee-framework/skeleton",
     "description": "Bee框架骨架",
     "require": {
+        "php": ">7.0",
         "ext-swoole": "^4.0",
         "ext-phalcon": "^3.4",
         "bee-framework/cli": "^1.0",

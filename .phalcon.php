@@ -3,9 +3,9 @@ return [
     // MySQL配置 - 开发环境生成模型
     'database' => [
         'adapter'  => 'Mysql',
-        "host"     => 'host',
-        'username' => "user",
-        'password' => "pass",
+        "host"     => 'gz-cdb-4wrd58ix.sql.tencentcdb.com',
+        'username' => "dev",
+        'password' => "xiaoheiban888DAFA",
         'dbname'   => "fsxq_pub",
         'port'     => 62008,
         'charset'  => 'utf8mb4'

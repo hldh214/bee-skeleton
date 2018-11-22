@@ -5,7 +5,7 @@ namespace Star\Util\Cache;
  * 排序缓存结构
  *  - 基于有序集合[sorted set]
  *
- * @package Ant\Util\Cache
+ * @package Star\Util\Cache
  */
 trait Sort
 {

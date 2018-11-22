@@ -10,5 +10,7 @@ nbproject/
 .htaccess
 vendor/
 composer.phar
+composer.lock
 !.phalcon.php
 Vagrantfile
+runtime/

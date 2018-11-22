@@ -26,12 +26,6 @@ $di->setShared('config.db', function() {
     return require(RUNTIME_PATH . '/build.db.php');
 });
 
-// Http 服务组件
-$di->setShared('service.http', function () use ($di) {
-    $server = $di->getShared('config.server');
-    return new \Star\Util\HttpServer($server['http']);
-});
-
 // 默认数据库组件
 $di->setShared('db', function() use ($di) {
     $config       = $di->get('config.db');
@@ -74,4 +68,10 @@ $di->setShared('db.redis.default', function () use ($di) {
     } catch (Exception $e) {
         throw new \Star\Util\Exception\RedisException($e->getMessage(), 500, [], $config);
     }
+});
+
+// Http 服务组件
+$di->setShared('service.http', function () use ($di) {
+    $server = $di->getShared('config.server');
+    return new \Star\Util\HttpServer($server['http']);
 });

@@ -240,6 +240,6 @@ class Log
     {
         $filename = RUNTIME_PATH . '/' . date('Y-m-d') . '.log';
         $data['create_time'] = time();
-        file_put_contents($filename, json_encode($data) . PHP_EOL, 8);
+        file_put_contents($filename, json_encode($data, JSON_UNESCAPED_UNICODE) . PHP_EOL, 8);
     }
 }

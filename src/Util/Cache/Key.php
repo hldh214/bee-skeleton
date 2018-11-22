@@ -5,7 +5,7 @@ namespace Star\Util\Cache;
  * key缓存结构
  *  - 基于字符串[string]
  *
- * @package Ant\Util\Cache
+ * @package Star\Util\Cache
  */
 Trait Key
 {

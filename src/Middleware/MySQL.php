@@ -26,7 +26,7 @@ class MySQL
         $result  = $mysql->query("SHOW VARIABLES LIKE 'wait_timeout'");
         $result  = $result->fetchArray();
         // 客户端空闲超时断开时间
-        $timeout = $result['Value'];
+        $timeout = $result['Value'] - 1;
         $time    = time();
 
         // 保存超时时间至全局变量

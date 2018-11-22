@@ -5,7 +5,7 @@ namespace Star\Util\Cache;
  * Hash缓存结构
  *  - 基于哈希表[hash]
  *
- * @package Ant\Util\Cache
+ * @package Star\Util\Cache
  */
 trait Hash
 {
