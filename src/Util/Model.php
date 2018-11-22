@@ -97,20 +97,8 @@ class Model extends \Phalcon\Mvc\Model
     static public function batchDelete($whereCondition)
     {
         $self = new static;
-        // 执行删除
-        return $self->getReadConnection()->delete($self->getSource(), $whereCondition);
-    }
 
-    /**
-     * 批量更新
-     *
-     * @param $whereCondition
-     * @return bool
-     */
-    static public function batchUpdate($whereCondition)
-    {
-        $self = new static;
-        // 执行更新
+        // 执行删除
         return $self->getReadConnection()->delete($self->getSource(), $whereCondition);
     }
 }

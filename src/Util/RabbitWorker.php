@@ -43,7 +43,6 @@ abstract class RabbitWorker extends \Bee\Mq\Consumer\Rabbit
     public function consume(\AMQPEnvelope $envelope, \AMQPQueue $queue)
     {
         try {
-
             // 提取消息数据
             $data   = $this->serializer::unpack($envelope->getBody());
 
@@ -56,11 +55,10 @@ abstract class RabbitWorker extends \Bee\Mq\Consumer\Rabbit
             $this->work($data);
 
         } catch (\Throwable $e) {
-
             // 错误记录
             $this->eventsManager->fire("log:handleMqThrowable", $this, $e);
-
-            // TODO: 错误处理
+            // 退出当前进程
+            $this->workerExit();
         }
 
         // 消息确认
@@ -82,15 +80,26 @@ abstract class RabbitWorker extends \Bee\Mq\Consumer\Rabbit
     public function exception(\Throwable $e)
     {
         $this->eventsManager->fire("log:handleMqThrowable", $this, $e);
+        // 退出当前进程
+        $this->workerExit();
     }
 
     /**
      * 错误处理
-     *
-     * @return mixed
      */
     public function error()
     {
         $this->eventsManager->fire("log:handleMqError", $this, func_get_args());
+    }
+
+    public function workerExit()
+    {
+        // 关闭MySQL连接
+        $this->db->close();
+        // 关闭Redis连接
+        Redis::connect()->close();
+
+        // 退出进程
+        parent::workerExit();
     }
 }

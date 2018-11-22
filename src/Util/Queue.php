@@ -16,7 +16,12 @@ class Queue extends Injectable
     /**
      * Group交换器名称
      */
-    const EX_DEMO = 'demo';
+    const EX_GROUP = 'EX_DEMO';
+
+    /**
+     * 加入星球路由名称
+     */
+    const ROUTE_JOIN_GROUP = 'example/route';
 
     /**
      * 发送加入星球消息
@@ -26,7 +31,7 @@ class Queue extends Injectable
      */
     public function example($data, $name = '')
     {
-        // 服务名称
+        // 服务魔人名称
         $service   = 'service.mq.producer';
         // 指定名称的服务
         if ($name) {
@@ -35,8 +40,8 @@ class Queue extends Injectable
 
         // 投递消息
         $this->di->getShared($service)->publish(
-            self::EX_DEMO,
-            'example/route',
+            self::EX_GROUP,
+            self::ROUTE_JOIN_GROUP,
             [
                 'no'      => $this->global['requestId'],
                 'user_id' => $this->global['userId'],

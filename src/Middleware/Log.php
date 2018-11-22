@@ -238,8 +238,41 @@ class Log
      */
     public function save($data = [])
     {
-        $filename = RUNTIME_PATH . '/' . date('Y-m-d') . '.log';
+        $config = Di::getDefault()->getShared('config.db');
+        $server = Di::getDefault()->getShared('config.server');
+
+        // 合并
+        $data   = array_merge($data, $config['log']['default']);
+        // 时间
         $data['create_time'] = time();
-        file_put_contents($filename, json_encode($data, JSON_UNESCAPED_UNICODE) . PHP_EOL, 8);
+
+        // 异步发送日志
+        go(function () use ($server, $data) {
+            $client = new \GuzzleHttp\Client(
+                [
+                    // Base URI is used with relative requests
+                    'base_uri' => $server['deploy']['host'],
+                    // You can set any number of default request options.
+                    'timeout'  => 2.0,
+                ]
+            );
+
+            try {
+                $client->request(
+                    'POST',
+                    '/log',
+                    [
+                        'form_params' => $data
+                    ]
+                );
+            } catch (\Throwable $e) {
+                // 日志发送失败
+                $filename = RUNTIME_PATH . '/' . date('Y-m-d') . '.log';
+                file_put_contents($filename, json_encode($data) . PHP_EOL, 8);
+                // 记录失败信息
+                $failed = RUNTIME_PATH . '/log-failed.log';
+                file_put_contents($failed, $e->getMessage() . PHP_EOL, 8);
+            }
+        });
     }
 }
