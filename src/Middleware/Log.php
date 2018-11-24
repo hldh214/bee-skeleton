@@ -248,7 +248,6 @@ class Log
         $data['create_time'] = time();
 
         // 异步发送日志
-        go(function () use ($server, $data) {
             $client = new \GuzzleHttp\Client(
                 [
                     // Base URI is used with relative requests
@@ -274,6 +273,5 @@ class Log
                 $failed = RUNTIME_PATH . '/log-failed.log';
                 file_put_contents($failed, $e->getMessage() . PHP_EOL, 8);
             }
-        });
     }
 }

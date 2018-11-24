@@ -47,7 +47,7 @@ class Response
         // 准备返回数据
         $data = [
             'result' => false,
-            'code'   => $e->getCode(),
+            'error'   => $e->getCode(),
             'msg'    => $e->getMessage(),
         ];
 
@@ -73,7 +73,7 @@ class Response
     {
         $data = [
             'result' => false,
-            'code'   => 500,
+            'error'   => 500,
             'msg'    => '系统错误，请稍后重试',
         ];
 
@@ -97,7 +97,7 @@ class Response
             // 准备返回数据
             $data = [
                 'result' => false,
-                'code'   => 500,
+                'error'   => 500,
                 'msg'    => '系统异常，请稍后重试',
             ];
 
