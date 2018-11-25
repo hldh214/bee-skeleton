@@ -1,6 +1,7 @@
 <?php
 namespace Star\Middleware;
 
+use Phalcon\Di;
 use Phalcon\Events\Event;
 use Star\Util\Micro;
 use Star\Util\Exception;

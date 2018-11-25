@@ -20,7 +20,7 @@ class Auth
      * @param Micro $micro
      * @return bool
      */
-    public function beforeHandleRoute(Event $event, Micro $micro)
+    public function beforeExecuteRoute(Event $event, Micro $micro)
     {
         return true;
     }
