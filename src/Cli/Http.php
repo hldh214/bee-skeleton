@@ -32,7 +32,7 @@ class Http extends Command
     {
         // 注册参数信息
         $this
-            ->argument('<action>', '操作可选值：[start|stop|restart|shutdown]')
+            ->argument('<action>', '操作可选值：[start|reload|restart|stop|shutdown]')
             ->argument('status', '查看服务运行状态')
         ;
 
