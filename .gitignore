@@ -4,7 +4,6 @@
 !.htrouter.php
 .idea/
 *.log
-runtime/build.db.php
 *.pid
 nbproject/
 .htaccess
