@@ -67,5 +67,5 @@ try {
     $micro->handle();
 
 } catch (\Throwable $e) {
-    (new \Ahc\Cli\Output\Writer)->error($e->getMessage());
+    echo $e->getMessage();
 }
